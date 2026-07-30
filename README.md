@@ -1,16 +1,62 @@
-# React + Vite
+# 📝 Sticky Notes App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple, dark-themed notes app built with React — create notes with a title and description, and they persist even after refreshing the page (thanks to `localStorage`).
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Add notes with a title and description
+- Delete notes instantly
+- Notes persist across page refreshes using `localStorage`
+- Responsive layout (stacked on mobile, side-by-side on larger screens)
+- Sticky-note style UI with a paper background
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **React** (Hooks: `useState`, `useEffect`)
+- **Tailwind CSS** for styling
+- **localStorage** for persistence (no backend/database needed)
 
-## Expanding the ESLint configuration
+## 📦 Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Clone the repo and install dependencies:
+
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+npm install
+npm run dev
+```
+
+Then open the local URL shown in your terminal (usually `http://localhost:5173`).
+
+## 🧠 How It Works
+
+- Notes are stored in a `task` state array, where each note is an object: `{ title, description }`
+- A `useEffect` loads saved notes from `localStorage` when the app first mounts
+- A second `useEffect` watches for changes to `task` and saves the updated list back to `localStorage`
+- A `loaded` flag ensures notes aren't accidentally overwritten before the initial load finishes (important in React's `StrictMode`, which runs effects twice in development)
+
+## 📁 Project Structure
+
+```
+src/
+├── assets/
+│   └── paperNote.png
+├── App.jsx
+└── main.jsx
+```
+
+## 🔮 Planned Improvements
+
+- [ ] Edit existing notes instead of only add/delete
+- [ ] Add note timestamps (created/updated)
+- [ ] Search/filter notes by title
+- [ ] Color-coded or draggable notes
+- [ ] Move storage from `localStorage` to a real backend/database for multi-device sync
+- [ ] Add empty-state UI when there are no notes yet
+- [ ] Confirm before deleting a note (avoid accidental deletion)
+- [ ] Animations for add/delete (e.g., using Framer Motion)
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
